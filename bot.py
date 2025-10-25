@@ -214,5 +214,22 @@ async def start_questions(ctx, member: discord.Member):
     with open("members.json", "w") as f:
         json.dump(data, f, indent=4)
 
+from flask import Flask
+from threading import Thread
+
+# Créer un mini serveur web Flask
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+# Lancer le serveur dans un thread séparé
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+Thread(target=run).start()
+
 # === Lancer le bot ===
 bot.run(TOKEN)
+
