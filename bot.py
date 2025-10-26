@@ -217,14 +217,14 @@ async def start_questions(ctx, member: discord.Member):
 from flask import Flask
 from threading import Thread
 
-# Créer un mini serveur web Flask
-app = Flask('')
+app = Flask('')  # Création du serveur Flask
 
+# Définir la racine "/"
 @app.route('/')
 def home():
-    return "Bot is alive!"
+    return "Bot is alive!"  # C’est le texte que tu verras dans le navigateur
 
-# Lancer le serveur dans un thread séparé
+# Lancer Flask dans un thread parallèle
 def run():
     app.run(host='0.0.0.0', port=8080)
 
@@ -232,4 +232,5 @@ Thread(target=run).start()
 
 # === Lancer le bot ===
 bot.run(TOKEN)
+
 
